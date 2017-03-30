@@ -1,4 +1,4 @@
-package clientLunar.model;
+package houston.model;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -8,16 +8,16 @@ import java.util.Scanner;
 /**
  * Created by codecadet on 30/03/17.
  */
-public class Server {
+public class Houston {
 
     String name;
     int port;
 
-    ServerSocket serverSocket = null;
-    Socket clientSocket = null;
+    ServerSocket mySocket = null;
+    Socket houstonSocket = null;
 
 
-    public Server(String name, int port) {
+    public Houston(String name, int port) {
         this.name = "localhost";
         this.port = port;
     }
@@ -26,16 +26,16 @@ public class Server {
 
         try {
 
-            serverSocket = new ServerSocket(port);
+            mySocket = new ServerSocket(port);
 
             System.out.println("waiting for client");
 
-            clientSocket = serverSocket.accept();
+            houstonSocket = mySocket.accept();
 
             System.out.println("got client");
 
-            ClientSender sender = new ClientSender(clientSocket);
-            ClientListener listener = new ClientListener(clientSocket);
+            ClientSender sender = new ClientSender(houstonSocket);
+            ClientListener listener = new ClientListener(houstonSocket);
 
             Thread senderThread = new Thread(sender);
             Thread Listenerthread = new Thread(listener);
@@ -109,7 +109,7 @@ public class Server {
 
         public synchronized void run() {
 
-            while (!clientSocket.isClosed()) {
+            while (!houstonSocket.isClosed()) {
                 sendCommand();
             }
 
@@ -122,9 +122,9 @@ public class Server {
 
                 DataOutputStream out;
 
-                out = new DataOutputStream(clientSocket.getOutputStream());
+                out = new DataOutputStream(houstonSocket.getOutputStream());
 
-                while(!clientSocket.isClosed()) {
+                while(!houstonSocket.isClosed()) {
 
                     String message = readServerMessage();
                     out.writeBytes(message);
@@ -146,7 +146,7 @@ public class Server {
 
     public static void main(String[] args) {
 
-        Server houston = new Server("houston", 8080);
+        Houston houston = new Houston("houston", 8080);
         houston.start();
     }
 

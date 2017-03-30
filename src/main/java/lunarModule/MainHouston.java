@@ -1,9 +1,9 @@
-package clientLunar;
+package lunarModule;
 
 /**
  * Created by codecadet on 30/03/17.
  */
-public class MainLunar {
+public class MainHouston {
 
     public static void main(String[] args) {
 
