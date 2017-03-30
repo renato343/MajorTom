@@ -4,6 +4,9 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -30,19 +33,24 @@ public class Houston {
 
             System.out.println("waiting for client");
 
-            houstonSocket = mySocket.accept();
+
 
             System.out.println("got client");
 
-            LunarModuleReader sender = new LunarModuleReader(houstonSocket);
-            LunarSender listener = new LunarSender(houstonSocket);
+            ExecutorService pool = Executors.newFixedThreadPool(10);
 
-            Thread senderThread = new Thread(sender);
-            Thread Listenerthread = new Thread(listener);
 
-            senderThread.start();
-            Listenerthread.start();
+            while (true) {
 
+                houstonSocket = mySocket.accept();
+
+                LunarModuleReader sender = new LunarModuleReader(houstonSocket);
+                LunarSender listener = new LunarSender(houstonSocket);
+
+                pool.submit(sender);
+                pool.submit(listener);
+
+            }
 
         } catch (IOException e) {
 
