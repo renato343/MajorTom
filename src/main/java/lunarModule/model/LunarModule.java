@@ -112,6 +112,7 @@ public class LunarModule {
 
                 while (!houstonSocket.isClosed()) {
 
+                    System.out.println("in send command of lunarmodule");
                     String message = readMyConsole();
                     out.write(message);
                     out.newLine();
