@@ -1,9 +1,6 @@
 package lunarModule.model;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.ServerSocket;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -15,7 +12,6 @@ public class LunarModule {
     String name;
     int port;
 
-    ServerSocket mySocket = null;
     Socket houstonSocket = null;
 
 
@@ -28,16 +24,10 @@ public class LunarModule {
 
         try {
 
-            mySocket = new ServerSocket(port);
+            houstonSocket = new Socket(name,port);
 
-            System.out.println("waiting for client");
-
-            houstonSocket = mySocket.accept();
-
-            System.out.println("got client");
-
-            ClientSender sender = new ClientSender(houstonSocket);
-            ClientListener listener = new ClientListener(houstonSocket);
+            LunarListener sender = new LunarListener(houstonSocket);
+            LunarSender listener = new LunarSender(houstonSocket);
 
             Thread senderThread = new Thread(sender);
             Thread Listenerthread = new Thread(listener);
@@ -53,46 +43,43 @@ public class LunarModule {
 
     }
 
-    private class ClientSender implements Runnable {
+    private class LunarListener implements Runnable {
 
-        private final Socket clientSocket;
+        public LunarListener(Socket houston) {
 
-        public ClientSender(Socket clientSocket) {
-
-            this.clientSocket = clientSocket;
+            houstonSocket = houston;
         }
 
         public synchronized void run() {
 
-            receiveMessage();
-
+            while (!houstonSocket.isClosed()) {
+                receiveMessage();
+            }
         }
 
         public void receiveMessage() {
 
             try {
 
-                DataInputStream in;
 
-                in = new DataInputStream(clientSocket.getInputStream());
+               DataInputStream in = new DataInputStream(houstonSocket.getInputStream());
 
-                while (!clientSocket.isClosed()) {
+                while (!houstonSocket.isClosed()) {
 
                     //console.setvisible(false);
 
-                    System.out.println("waiting client to write");
+                    System.out.println("waiting Houston to write");
 
                     String messageIn = in.readLine();
 
                     System.out.println(messageIn);
-
-                    messageIn = in.toString();
 
                     //console.setText(messageIn);
 
                     //console.setvisible(true);
 
                 }
+                houstonSocket.close();
 
 
             } catch (IOException e) {
@@ -101,12 +88,12 @@ public class LunarModule {
         }
     }
 
-    private class ClientListener implements Runnable {
+    private class LunarSender implements Runnable {
 
-        private final Socket senderSocket;
 
-        private ClientListener(Socket senderSocket) {
-            this.senderSocket = senderSocket;
+
+        private LunarSender(Socket houston) {
+           houstonSocket = houston;
         }
 
         public synchronized void run() {
@@ -121,23 +108,23 @@ public class LunarModule {
 
             try {
 
-
-                DataOutputStream out;
-
-                out = new DataOutputStream(houstonSocket.getOutputStream());
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(houstonSocket.getOutputStream()));
 
                 while (!houstonSocket.isClosed()) {
 
-                    String message = readServerMessage();
-                    out.writeBytes(message);
+                    String message = readMyConsole();
+                    out.write(message);
+                    out.newLine();
+                    out.flush();
                 }
+                houstonSocket.close();
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        private String readServerMessage() {
+        private String readMyConsole() {
 
             System.out.println("wait for server to write");
             Scanner reader = new Scanner(System.in);

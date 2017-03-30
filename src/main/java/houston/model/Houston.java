@@ -34,8 +34,8 @@ public class Houston {
 
             System.out.println("got client");
 
-            ClientSender sender = new ClientSender(houstonSocket);
-            ClientListener listener = new ClientListener(houstonSocket);
+            LunarModuleReader sender = new LunarModuleReader(houstonSocket);
+            LunarSender listener = new LunarSender(houstonSocket);
 
             Thread senderThread = new Thread(sender);
             Thread Listenerthread = new Thread(listener);
@@ -46,16 +46,17 @@ public class Houston {
 
         } catch (IOException e) {
 
+
             e.printStackTrace();
         }
 
     }
 
-    private class ClientSender implements Runnable {
+    private class LunarModuleReader implements Runnable {
 
         private final Socket clientSocket;
 
-        public ClientSender(Socket clientSocket) {
+        public LunarModuleReader(Socket clientSocket) {
 
             this.clientSocket = clientSocket;
         }
@@ -91,7 +92,7 @@ public class Houston {
                     //console.setvisible(true);
 
                 }
-
+                clientSocket.close();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -99,11 +100,11 @@ public class Houston {
         }
     }
 
-    private class ClientListener implements Runnable {
+    private class LunarSender implements Runnable {
 
         private final Socket senderSocket;
 
-        private ClientListener(Socket senderSocket) {
+        private LunarSender(Socket senderSocket) {
             this.senderSocket = senderSocket;
         }
 
@@ -111,6 +112,11 @@ public class Houston {
 
             while (!houstonSocket.isClosed()) {
                 sendCommand();
+            }
+            try {
+                houstonSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
         }
@@ -120,14 +126,16 @@ public class Houston {
             try {
 
 
-                DataOutputStream out;
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(houstonSocket.getOutputStream()));
 
-                out = new DataOutputStream(houstonSocket.getOutputStream());
+
 
                 while(!houstonSocket.isClosed()) {
 
                     String message = readServerMessage();
-                    out.writeBytes(message);
+                    out.write(message);
+                    out.newLine();
+                    out.flush();
                 }
 
             } catch (IOException e) {
