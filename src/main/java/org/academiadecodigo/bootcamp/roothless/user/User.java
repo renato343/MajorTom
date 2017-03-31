@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp.roothless.user;
 
-import org.academiadecodigo.bootcamp.roothless.Planet;
-import org.academiadecodigo.bootcamp.roothless.Score;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.model.utils.Planet;
 
 import java.util.Date;
 import java.util.Set;

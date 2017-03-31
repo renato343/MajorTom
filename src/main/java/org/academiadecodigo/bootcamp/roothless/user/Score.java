@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.roothless;
+package org.academiadecodigo.bootcamp.roothless.user;
 
 /**
  * Created by codecadet on 31/03/17.
