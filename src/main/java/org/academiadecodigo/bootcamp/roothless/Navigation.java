@@ -5,8 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import sun.plugin2.jvm.RemoteJVMLauncher;
 
 import java.io.IOException;
 import java.util.HashMap;

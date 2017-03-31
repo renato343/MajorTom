@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp.roothless.houston.controller.HoustonController;
+import org.academiadecodigo.bootcamp.roothless.houston.sound.Sound;
 
 import java.io.IOException;
 
@@ -49,6 +50,10 @@ public class HoustonMain extends Application {
 
         this.stage = primaryStage;
         loadScreen();
+
+        Sound backSOund = new Sound(" major.wav");
+
+        backSOund.play();
 
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.academiadecodigo.bootcamp.roothless.Navigation;
+import org.academiadecodigo.bootcamp.roothless.houston.sound.Sound;
 import org.academiadecodigo.bootcamp.roothless.lunarModule.controller.TestController;
 import org.academiadecodigo.bootcamp.roothless.lunarModule.model.DynSpaceShip;
 import org.academiadecodigo.bootcamp.roothless.lunarModule.model.LunarModule;
@@ -53,6 +54,11 @@ public class Test extends Application {
         Navigation navigation = Navigation.getInstance();
         navigation.setStage(primaryStage);
         navigation.loadScreen("Landingpage2");
+
+
+        Sound backSOund = new Sound(" major.wav");
+
+        backSOund.play();
         //navigation.loadScreen("Landingpage2");
 
        /* try {

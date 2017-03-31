@@ -53,7 +53,7 @@ public class DynSpaceShip {
 
 
         if (yPosition >= 180) {
-            if (yVelocity >= 5 || xVelocity <= -5 || xVelocity >= 5) {
+            if (yVelocity >= 5 || xVelocity <= -5 || xVelocity >= 5 .) {
                 gameIsOver = true;
                 gameOverCrash = true;
 
