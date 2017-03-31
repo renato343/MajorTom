@@ -12,9 +12,9 @@
         </id>
         <property name="username" column="username" type="string" unique="true" not-null="true"/>
         <property name="password" column="password" type="string" not-null="true"/>
-        <property name="planet" column="planet" type="string"/>
-        <property name="score_houston" column="score_houston" type="double"/>
-        <property name="score_spaceship" column="score_spaceship" type="double"/>
+        <property name="planets" column="planet" type="string"/>
+        <property name="houston_scores" column="score_houston" type="double"/>
+        <property name="spaceship_scores" column="score_spaceship" type="double"/>
         <property name="date_score" column="date_score" type="timestamp"/>
 
 
