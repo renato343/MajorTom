@@ -8,7 +8,7 @@ CREATE TABLE user(
   password CHAR(16) NOT NULL,
   planet CHAR(40),
   score_houston int,
-  score_lunar int,
+  score_spaceship int,
   date_score TIMESTAMP,
   PRIMARY KEY (id)
 );

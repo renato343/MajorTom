@@ -6,12 +6,30 @@ import java.util.Date;
  * Created by codecadet on 31/03/17.
  */
 public class User {
+    
     private String username;
     private String password;
     private String planet;
     private double score_houston;
-    private double score_spaceship;
     private Date date_score;
+    private double score_spaceship;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getScore_spaceship() {
+        return score_spaceship;
+    }
+
+    public void setScore_spaceship(double score_spaceship) {
+        this.score_spaceship = score_spaceship;
+    }
 
     public Date getDate_score() {
         return date_score;
@@ -21,14 +39,7 @@ public class User {
         this.date_score = date_score;
     }
 
-    public double getScore_ship() {
-        return score_spaceship;
-    }
-
-    public void setScore_ship(double score_ship) {
-        this.score_spaceship = score_ship;
-    }
-
+    
     public double getScore_houston() {
         return score_houston;
     }
