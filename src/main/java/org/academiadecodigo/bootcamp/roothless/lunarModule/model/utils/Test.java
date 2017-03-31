@@ -53,6 +53,7 @@ public class Test extends Application {
         Navigation navigation = Navigation.getInstance();
         navigation.setStage(primaryStage);
         navigation.loadScreen("Landingpage2");
+        //navigation.loadScreen("Landingpage2");
 
        /* try {
             LunarModule lunarModule = new LunarModule("localhost", 9999);

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.roothless.houston.controller.HoustonController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="458.0" layoutX="27.0" layoutY="136.0" stroke="BLACK" strokeType="INSIDE" width="281.0" />
+      <Button layoutX="167.0" layoutY="202.0" mnemonicParsing="false" onAction="#setDIrectioUp" prefHeight="60.0" prefWidth="60.0" text="UP">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="107.0" layoutY="262.0" mnemonicParsing="false" onAction="#setDIrectionLeft" prefHeight="60.0" prefWidth="60.0" text="LEFT">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="226.0" layoutY="262.0" mnemonicParsing="false" onAction="#setDIrectionRight" prefHeight="60.0" prefWidth="60.0" text="RIGHT">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="145.0" text="TRUST" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="663.0" text="MISSION TIME" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="14.0" text="CONSOLE" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="693.0" prefHeight="42.0" prefWidth="159.0" style="-fx-background-color: BLACK; -fx-border-color: lime;" text="TIME VALUE" textAlignment="CENTER" textFill="LIME" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Slider fx:id="potencyBar" layoutX="50.0" layoutY="175.0" minorTickCount="1" onMouseReleased="#setThrust" orientation="VERTICAL" prefHeight="393.0" prefWidth="53.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="50.0" />
+      <Button layoutX="139.0" layoutY="526.0" mnemonicParsing="false" onAction="#sendToLunar" prefHeight="42.0" prefWidth="109.0" text="SEND">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <TextField fx:id="consoleHouston" layoutX="36.0" layoutY="42.0" prefHeight="42.0" prefWidth="954.0" promptText="Ticker" style="-fx-background-color: Black;">
+         <font>
+            <Font name="Open 24 Display St" size="24.0" />
+         </font></TextField>
+      <Label layoutX="38.0" layoutY="107.0" text="MANUAL OVERIDE" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="145.0" text="PROPULSORS" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Group layoutX="478.0" layoutY="281.5" />
+      <Circle fill="#1f93ff00" layoutX="294.0" layoutY="149.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="4.0" layoutX="297.0" layoutY="149.0" startX="-10.0" strokeMiterLimit="8.0" strokeWidth="3.0" />
+      <Circle fill="#1f93ff00" layoutX="38.0" layoutY="149.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="4.0" layoutX="41.0" layoutY="149.0" startX="-10.0" strokeMiterLimit="8.0" strokeWidth="3.0" />
+      <Circle fill="#1f93ff00" layoutX="294.0" layoutY="385.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="4.0" layoutX="297.0" layoutY="385.0" startX="-10.0" strokeMiterLimit="8.0" strokeWidth="3.0" />
+      <Circle fill="#1f93ff00" layoutX="293.0" layoutY="578.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="4.0" layoutX="296.0" layoutY="578.0" startX="-10.0" strokeMiterLimit="8.0" strokeWidth="3.0" />
+      <Circle fill="#1f93ff00" layoutX="38.0" layoutY="581.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="4.0" layoutX="41.0" layoutY="581.0" startX="-10.0" strokeMiterLimit="8.0" strokeWidth="3.0" />
+      <Circle fill="#1f93ff00" layoutX="38.0" layoutY="383.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="4.0" layoutX="41.0" layoutY="383.0" startX="-10.0" strokeMiterLimit="8.0" strokeWidth="3.0" />
+      <Button layoutX="167.0" layoutY="322.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" text="DOWN">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f26b5" height="62.0" layoutX="167.0" layoutY="321.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <ImageView fitHeight="444.0" fitWidth="673.0" layoutX="323.0" layoutY="136.0">
+         <image>
+            <Image url="@images/Consola.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

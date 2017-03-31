@@ -14,7 +14,7 @@ public class GameLoop implements Runnable {
     }
 
     public void run() {
-        while (true) {
+        while (!dynSpaceShip.isGameIsOver()) {
 
             System.out.println("------>dentro do while");
             try {
@@ -22,7 +22,7 @@ public class GameLoop implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("dentro do while loop a imprimir o tempo" + System.nanoTime());
+            System.out.println("dentro do while loop aq imprimir o tempo" + System.nanoTime());
 
             dynSpaceShip.setCountThrustUp(dynSpaceShip.getCountThrustUp() + 1);
             dynSpaceShip.setCountThrustHor(dynSpaceShip.getCountThrustHor() + 1);

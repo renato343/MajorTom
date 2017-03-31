@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="744.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.roothless.lunarModule.controller.TestController">
+   <children>
+      <ImageView fx:id="lua" fitHeight="2000.0" fitWidth="5000.0" layoutX="-889.0" layoutY="-637.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/LuaMax.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="768.0" fitWidth="1024.0" layoutY="-17.0">
+         <image>
+            <Image url="@../assets/backgroundLEM.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="733.0" layoutY="609.0" style="-fx-border-color: black;" text="SCORE:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreValueLabel" layoutX="733.0" layoutY="648.0" style="-fx-background-color: black;" text="scoreValue" textFill="#7ff510">
+         <font>
+            <Font name="Open 24 Display St" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="timeLabel" layoutX="426.0" layoutY="674.0" style="-fx-border-color: black;" text="HH:MM::SS" textFill="#ccff02">
+         <font>
+            <Font name="Open 24 Display St" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="623.0" prefHeight="23.0" prefWidth="206.0" text="VERTICAL VELOCITY" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="528.0" text="HORIZONTAL VELOCITYV" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="velHorValueLabel" alignment="CENTER_RIGHT" layoutX="55.0" layoutY="551.0" prefHeight="68.0" prefWidth="158.0" style="-fx-background-color: black; -fx-border-color: black;" text="hVValue" textFill="LIME">
+         <font>
+            <Font name="Open 24 Display St" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="velVertValueLabel" alignment="CENTER_RIGHT" layoutX="55.0" layoutY="647.0" prefHeight="68.0" prefWidth="158.0" style="-fx-background-color: black; -fx-border-color: black;" text="vVValue" textAlignment="CENTER" textFill="LIME">
+         <font>
+            <Font name="Open 24 Display St" size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="sendtoHouston" layoutX="839.0" layoutY="463.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="102.0" text="SEND">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <ProgressBar fx:id="posVerProgressBar" layoutX="-163.0" layoutY="242.0" prefHeight="30.0" prefWidth="366.0" progress="0.54" rotate="-90.0" />
+      <Label layoutX="-5.0" layoutY="455.0" prefHeight="19.0" prefWidth="51.0" text="Vertical " textFill="WHITE" />
+      <Label fx:id="posVertValueLabel" layoutX="-1.0" layoutY="475.0" text="pVValue" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Open 24 Display St" size="14.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="posHorProgressBar" layoutX="35.0" layoutY="5.0" prefHeight="30.0" prefWidth="900.0" progress="0.36" />
+      <Label layoutX="47.0" layoutY="-18.0" text="Horizontal Position" textFill="WHITE" />
+      <Label fx:id="posHorValueLabel" layoutX="181.0" layoutY="-19.0" text="pHValue" textFill="WHITE">
+         <font>
+            <Font name="Open 24 Display St" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="118.0" fitWidth="200.0" layoutX="79.0" layoutY="80.0">
+         <image>
+            <Image url="@../assets/350-inline-1-enterprise.gif" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="fuelProgressBar" layoutX="808.0" layoutY="211.0" prefHeight="30.0" prefWidth="369.0" progress="0.36" rotate="-90.0" />
+      <ImageView fx:id="exo" fitHeight="191.0" fitWidth="341.0" layoutX="290.0" layoutY="46.0">
+         <image>
+            <Image url="@../assets/maxresdefault.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="967.0" layoutY="432.0" text="Fuel" textFill="WHITE" />
+      <Label fx:id="fuelValueLabel" layoutX="951.0" layoutY="456.0" text="fuelValue" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Open 24 Display St" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="youLost" alignment="CENTER" contentDisplay="CENTER" layoutX="131.0" layoutY="92.0" prefHeight="123.0" prefWidth="743.0" text="Sorry, you lost. Maybe you should take a walk outside without your helmet...." textAlignment="CENTER" textFill="#f8f5f5" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="youWon" alignment="CENTER" contentDisplay="CENTER" layoutX="131.0" layoutY="223.0" prefHeight="123.0" prefWidth="743.0" text="Well done! You landed safely but do you have enough fuel to go back?" textAlignment="CENTER" textFill="#f8f5f5" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="consoleTextField" layoutX="54.0" layoutY="461.0" prefHeight="49.0" prefWidth="777.0" promptText="Type your text here; Press SEND to send it" style="-fx-background-color: Black;">
+         <font>
+            <Font name="Open 24 Display St" size="24.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="hansSolo" fitHeight="200.0" fitWidth="200.0" layoutX="710.0" layoutY="211.0" rotate="21.0">
+         <image>
+            <Image url="@../assets/62843.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="426.0" layoutY="636.0" style="-fx-border-color: black;" text="MISSION TIME" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="spock" fitHeight="199.0" fitWidth="155.0" layoutX="57.0" layoutY="247.0">
+         <image>
+            <Image url="@../assets/Spocks.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

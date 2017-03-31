@@ -18,7 +18,10 @@ public class DynSpaceShip {
     private double thrustHorizontal = 0;
     private double countThrustUp;
     private double countThrustHor;
-
+    private boolean gameIsOver;
+    private boolean gameOverCrash;
+    private boolean gameOverSpace;
+    private boolean winGame;
 
 
     public void update() {
@@ -47,6 +50,25 @@ public class DynSpaceShip {
         System.out.println("X POSITION " + xPosition);
         System.out.println("Y VElocity " + yVelocity);
         System.out.println("X velocity " + xVelocity);
+
+
+        if (yPosition >= 180) {
+            if (yVelocity >= 5 || xVelocity <= -5 || xVelocity >= 5) {
+                gameIsOver = true;
+                gameOverCrash = true;
+
+            } else {
+                gameIsOver = true;
+                winGame = true;
+
+            }
+        } else if (yPosition <= 50) {
+            gameIsOver = true;
+            gameOverSpace = true;
+        } else if (xPosition <= -300 || xPosition >= 300) {
+            gameIsOver = true;
+            gameOverSpace = true;
+        }
 
     }
 
@@ -125,5 +147,21 @@ public class DynSpaceShip {
 
     public void setCountThrustHor(double countThrustHor) {
         this.countThrustHor = countThrustHor;
+    }
+
+    public boolean isGameIsOver() {
+        return gameIsOver;
+    }
+
+    public boolean isGameOverCrash() {
+        return gameOverCrash;
+    }
+
+    public boolean isGameOverSpace() {
+        return gameOverSpace;
+    }
+
+    public boolean isWinGame() {
+        return winGame;
     }
 }

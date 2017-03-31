@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="728.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.roothless.lunarModule.controller.TestController">
+   <children>
+      <ImageView fx:id="lua" fitHeight="2000.0" fitWidth="5000.0" layoutX="-949.0" layoutY="-659.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/assets/LuaMax.jpg" />
+         </image>
+      </ImageView>
+   <ImageView fx:id="back" fitHeight="768.0" fitWidth="1024.0">
+      <image>
+         <Image url="/assets/backgroundLEM.png" />
+      </image>
+      </ImageView>
+      <ProgressBar fx:id="posVerProgressBar" layoutX="-141.0" layoutY="256.0" prefHeight="30.0" prefWidth="366.0" progress="0.54" rotate="-90.0" />
+      <Label layoutX="3.0" layoutY="467.0" text="Vertical Position" />
+      <Label layoutX="111.0" layoutY="526.0" text="Horizontal Velocity" textFill="#0a0a0a" />
+      <Label layoutX="118.0" layoutY="560.0" prefHeight="17.0" prefWidth="102.0" text="Vertical Velocity" textFill="#141414" />
+      <Label fx:id="velHorValueLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="240.0" layoutY="522.0" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: black; -fx-border-color: black;" text="hVValue" textAlignment="CENTER" textFill="LIME" />
+      <Label fx:id="velVertValueLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="240.0" layoutY="554.0" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: black; -fx-border-color: black;" text="vVValue" textAlignment="CENTER" textFill="LIME" />
+      <TextArea fx:id="consoleTextArea" layoutX="350.0" layoutY="493.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="289.0" promptText="Type your text here; Press Send to send it" style="-fx-background-color: black;" />
+      <Button fx:id="send" layoutX="651.0" layoutY="495.0" mnemonicParsing="false" onAction="#sendButton" text="SEND" />
+      <ProgressBar fx:id="posHorProgressBar" layoutX="62.0" layoutY="25.0" prefHeight="30.0" prefWidth="900.0" progress="0.36" />
+      <Label layoutX="63.0" layoutY="8.0" text="Horizontal Position" textFill="#030303" />
+      <Label layoutX="111.0" layoutY="596.0" textFill="#0a0a0a" />
+x      <Label fx:id="youLost" alignment="CENTER" contentDisplay="CENTER" layoutX="94.0" layoutY="146.0" prefHeight="195.0" prefWidth="750.0" text="YOU CRASHED! Sorry, you lost. Maybe you should take a walk outside without your helmet...." textAlignment="CENTER" textFill="#f8f5f5" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="exo" fitHeight="191.0" fitWidth="341.0" layoutX="495.0" layoutY="55.0">
+         <image>
+            <Image url="/assets/maxresdefault.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hansSolo" fitHeight="200.0" fitWidth="200.0" layoutX="578.0" layoutY="254.0">
+         <image>
+            <Image url="@../assets/62843.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="spock" fitHeight="199.0" fitWidth="155.0" layoutX="120.0" layoutY="255.0">
+         <image>
+            <Image url="@../assets/Spocks.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="118.0" fitWidth="200.0" layoutX="79.0" layoutY="62.0">
+         <image>
+            <Image url="@../assets/350-inline-1-enterprise.gif" />
+         </image>
+      </ImageView>
+      <Label fx:id="posVerValueLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="111.0" layoutY="462.0" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: black; -fx-border-color: black;" text="pVValue" textAlignment="CENTER" textFill="LIME" />
+      <Label fx:id="posHorValueLevel" alignment="CENTER" contentDisplay="CENTER" layoutX="191.0" layoutY="1.0" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: black; -fx-border-color: black;" text="pHValue" textAlignment="CENTER" textFill="LIME" />
+   </children>
+</Pane>

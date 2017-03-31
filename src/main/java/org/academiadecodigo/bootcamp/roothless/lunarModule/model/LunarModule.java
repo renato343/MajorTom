@@ -123,10 +123,10 @@ public class LunarModule {
                     service.thrustUp(thrust);
                     break;
                 case "right":
-                    service.thrustRight(thrust);
+                    service.thrustRight(thrust/5);
                     break;
                 case "left":
-                    service.thrustLeft(thrust);
+                    service.thrustLeft(thrust/5);
                     break;
 
             }

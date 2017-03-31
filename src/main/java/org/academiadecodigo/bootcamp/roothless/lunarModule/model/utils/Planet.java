@@ -4,7 +4,7 @@ package org.academiadecodigo.bootcamp.roothless.lunarModule.model.utils;
  * Created by codecadet on 30/03/17.
  */
 public enum Planet {
-    MOON(1.62),
+    MOON(0.5),
     MARS(3.73),
     EARTH(9.8);
 
