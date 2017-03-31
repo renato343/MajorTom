@@ -2,38 +2,38 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.roothless.houston.controller.HoustonController">
    <children>
-      <ListView layoutX="163.0" layoutY="43.0" prefHeight="200.0" prefWidth="727.0" style="-fx-background-color: black; -fx-border-color: lime;" />
-      <Button layoutX="433.0" layoutY="384.0" mnemonicParsing="false" onAction="#setDIrectioUp" text="UP" />
-      <Button layoutX="384.0" layoutY="446.0" mnemonicParsing="false" onAction="#setDIrectionLeft" text="LEFT" />
-      <Button layoutX="469.0" layoutY="446.0" mnemonicParsing="false" onAction="#setDIrectionRight" text="RIGHT" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="502.0" layoutY="596.0" text="POTENCY" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="154.0" layoutY="362.0" mnemonicParsing="false" onAction="#setDIrectioUp" text="UP" />
+      <Button layoutX="105.0" layoutY="424.0" mnemonicParsing="false" onAction="#setDIrectionLeft" text="LEFT" />
+      <Button layoutX="190.0" layoutY="424.0" mnemonicParsing="false" onAction="#setDIrectionRight" text="RIGHT" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="574.0" text="TRUST" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="552.0" layoutY="492.0" text="OPERATION TIME" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="793.0" layoutY="38.0" text="MISSION TIME" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="387.0" layoutY="492.0" text="PROPULSORS" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="108.0" layoutY="470.0" text="PROPULSORS" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="552.0" layoutY="431.0" prefHeight="42.0" prefWidth="159.0" style="-fx-background-color: BLACK; -fx-border-color: lime;" text="TIME VALUE" textAlignment="CENTER" textFill="LIME" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="793.0" layoutY="61.0" prefHeight="42.0" prefWidth="159.0" style="-fx-background-color: BLACK; -fx-border-color: lime;" text="TIME VALUE" textAlignment="CENTER" textFill="LIME" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Slider layoutX="382.0" layoutY="548.0" minorTickCount="1" onMouseDragReleased="#setThrust" prefHeight="38.0" prefWidth="329.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-      <Button layoutX="520.0" layoutY="669.0" mnemonicParsing="false" onAction="#sendToLunar" text="SEND" />
+      <Slider layoutX="103.0" layoutY="526.0" minorTickCount="1" onMouseReleased="#setThrust" prefHeight="38.0" prefWidth="329.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <Button layoutX="241.0" layoutY="647.0" mnemonicParsing="false" onAction="#sendToLunar" text="SEND" />
+      <TextField fx:id="consoleHouston" layoutX="103.0" layoutY="61.0" prefHeight="240.0" prefWidth="613.0" />
    </children>
 </Pane>

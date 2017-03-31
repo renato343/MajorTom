@@ -16,10 +16,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseDragEvent;
+import javafx.scene.control.TextField;
 import org.academiadecodigo.bootcamp.roothless.houston.model.Houston;
 
 public class HoustonController implements Initializable {
+
 
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -42,6 +43,9 @@ public class HoustonController implements Initializable {
 
     @FXML // fx:id="sendButton"
     private Button sendButton; // Value injected by FXMLLoader
+
+    @FXML
+    public TextField consoleHouston;
 
     private String direction;
 
@@ -70,7 +74,7 @@ public class HoustonController implements Initializable {
     }
 
     @FXML
-    public String sendToLunar() {
+    public void sendToLunar() {
 
         System.out.println("estou no sendind message");
 
@@ -78,10 +82,7 @@ public class HoustonController implements Initializable {
 
         System.out.println("sending to houston from controller " + messageToSend);
 
-        houston.sendMessage();
-
-        return messageToSend;
-
+        houston.sendToLunarModule(messageToSend);
     }
 
     @FXML
@@ -104,10 +105,17 @@ public class HoustonController implements Initializable {
     }
 
     @FXML
-    void setThrust(MouseDragEvent event) {
+    void setThrust() {
         System.out.println("estou no thrust");
-        setThrustPotency(potencyBar.getValue());
-        System.out.println(potencyBar.getValue());
+        //setThrustPotency(potencyBar.getValue());
+        setThrustPotency(50);
+
+    }
+
+   public void setConsoleHouston(String messageToConsole){
+
+       System.out.println("enter set console in controller");
+        consoleHouston.setText(messageToConsole);
 
     }
 
@@ -117,5 +125,6 @@ public class HoustonController implements Initializable {
           Thread houstonServer = new Thread(houston);
 
           houstonServer.start();
+          houston.setHoustonController(this);
     }
 }

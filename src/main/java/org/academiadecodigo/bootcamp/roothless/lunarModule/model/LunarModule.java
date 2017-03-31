@@ -16,7 +16,7 @@ public class LunarModule {
 
 
     public LunarModule(String name, int port) {
-        this.name = "192.168.1.13";
+        this.name = "localhost";
         this.port = 8080;
     }
 
@@ -54,9 +54,8 @@ public class LunarModule {
 
         public synchronized void run() {
 
-            while (!houstonSocket.isClosed()) {
-                receiveMessage();
-            }
+            receiveMessage();
+
         }
 
         public void receiveMessage() {
@@ -94,15 +93,14 @@ public class LunarModule {
 
             System.out.println("this is message Received " + messageReceived);
             String direction = messageReceived.split(" ")[0];
-            System.out.println("this is direction " + direction);
+
 
         }
 
         public void parserThrust(String messageReceived) {
 
-            System.out.println("this is message Received  in Thrust " + messageReceived);
-            int thrust = Integer.parseInt(messageReceived.split(" ")[1]);
-            System.out.println("this is thrust " + thrust);
+            System.out.println("this is message Received  in Thrust Parser" + messageReceived);
+            Double thrust = Double.parseDouble(messageReceived.split(" ")[1]);
 
         }
     }
@@ -116,9 +114,7 @@ public class LunarModule {
 
         public synchronized void run() {
 
-            while (!houstonSocket.isClosed()) {
-                sendCommand();
-            }
+            sendCommand();
 
         }
 
