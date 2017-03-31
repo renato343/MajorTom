@@ -1,38 +1,50 @@
 package org.academiadecodigo.bootcamp.roothless.houston.model;
 
+import org.academiadecodigo.bootcamp.roothless.houston.controller.HoustonController;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.model.LunarModule;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
  * Created by codecadet on 30/03/17.
  */
-public class Houston {
+public class Houston implements Runnable {
 
-    String name;
-    int port;
+    private String name;
+    private int port;
+
+    HoustonController houstonController;
+    LunarModuleReader sender;
+    LunarSender listener;
 
     ServerSocket mySocket = null;
     Socket houstonSocket = null;
 
 
     public Houston(String name, int port) {
-        this.name = "localhost";
+        this.name = name;
         this.port = port;
     }
 
-    public void start() {
+    public void sendMessage(){
+
+        listener.sendCommand();
+
+    }
+
+
+
+    public void run() {
 
         try {
 
             mySocket = new ServerSocket(port);
 
             System.out.println("waiting for client");
-
 
 
             System.out.println("got client");
@@ -44,8 +56,8 @@ public class Houston {
 
                 houstonSocket = mySocket.accept();
 
-                LunarModuleReader sender = new LunarModuleReader(houstonSocket);
-                LunarSender listener = new LunarSender(houstonSocket);
+                sender = new LunarModuleReader(houstonSocket);
+                listener = new LunarSender(houstonSocket);
 
                 pool.submit(sender);
                 pool.submit(listener);
@@ -60,7 +72,8 @@ public class Houston {
 
     }
 
-    private class LunarModuleReader implements Runnable {
+
+    public class LunarModuleReader implements Runnable {
 
         private final Socket clientSocket;
 
@@ -108,7 +121,7 @@ public class Houston {
         }
     }
 
-    private class LunarSender implements Runnable {
+    public class LunarSender implements Runnable {
 
         private final Socket senderSocket;
 
@@ -133,12 +146,9 @@ public class Houston {
 
             try {
 
-
                 BufferedWriter out = new BufferedWriter(new OutputStreamWriter(houstonSocket.getOutputStream()));
 
-
-
-                while(!houstonSocket.isClosed()) {
+                while (!houstonSocket.isClosed()) {
 
                     String message = readServerMessage();
                     out.write(message);
@@ -153,18 +163,15 @@ public class Houston {
 
         private String readServerMessage() {
 
-            System.out.println("wait for server to write");
-            Scanner reader = new Scanner(System.in);
-            return reader.nextLine();
+
+            System.out.println("sending to Lunar from Houston" + houstonController.sendToLunar());
+
+            return houstonController.sendToLunar();
 
         }
     }
 
-    public static void main(String[] args) {
 
-        Houston houston = new Houston("houston", 8080);
-        houston.start();
-    }
 
 
 }

@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.roothless.houston.controller.HoustonController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.roothless.houston.controller.HoustonController">
    <children>
       <ListView layoutX="163.0" layoutY="43.0" prefHeight="200.0" prefWidth="727.0" style="-fx-background-color: black; -fx-border-color: lime;" />
-      <Button layoutX="433.0" layoutY="384.0" mnemonicParsing="false" text="UP" />
-      <Button layoutX="384.0" layoutY="446.0" mnemonicParsing="false" text="LEFT" />
-      <Button layoutX="469.0" layoutY="446.0" mnemonicParsing="false" text="RIGHT" />
+      <Button layoutX="433.0" layoutY="384.0" mnemonicParsing="false" onAction="#setDIrectioUp" text="UP" />
+      <Button layoutX="384.0" layoutY="446.0" mnemonicParsing="false" onAction="#setDIrectionLeft" text="LEFT" />
+      <Button layoutX="469.0" layoutY="446.0" mnemonicParsing="false" onAction="#setDIrectionRight" text="RIGHT" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="502.0" layoutY="596.0" text="POTENCY" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -33,7 +33,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Slider layoutX="382.0" layoutY="548.0" minorTickCount="1" prefHeight="38.0" prefWidth="329.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-      <Button layoutX="520.0" layoutY="669.0" mnemonicParsing="false" text="SEND" />
+      <Slider layoutX="382.0" layoutY="548.0" minorTickCount="1" onMouseDragReleased="#setThrust" prefHeight="38.0" prefWidth="329.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <Button layoutX="520.0" layoutY="669.0" mnemonicParsing="false" onAction="#sendToLunar" text="SEND" />
    </children>
 </Pane>
