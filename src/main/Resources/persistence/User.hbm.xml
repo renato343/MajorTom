@@ -8,9 +8,9 @@
         <id name="id" column="id" type="int">
             <generator class="identity"/>
         </id>
-        <property name="username" column="username" type="string" unique="true"/>
-        <property name="password" column="password" type="string"/>
-<property name="planet" column="planet" type="string"/>
+        <property name="username" column="username" type="string" unique="true" not-null="true"/>
+        <property name="password" column="password" type="string" not-null="true"/>
+        <property name="planet" column="planet" type="string"/>
         <property name="score_houston" column="score_houston" type="string"/>
         <property name="score_ship" column="score_ship" type="string"/>
         <property name="date_score" column="date_score" type="timestamp"/>
