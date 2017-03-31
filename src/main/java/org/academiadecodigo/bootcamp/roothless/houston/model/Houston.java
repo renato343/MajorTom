@@ -1,4 +1,4 @@
-package houston.model;
+package org.academiadecodigo.bootcamp.roothless.houston.model;
 
 import java.io.*;
 import java.net.ServerSocket;

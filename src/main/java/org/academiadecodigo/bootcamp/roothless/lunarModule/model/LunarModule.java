@@ -1,4 +1,4 @@
-package lunarModule.model;
+package org.academiadecodigo.bootcamp.roothless.lunarModule.model;
 
 import java.io.*;
 import java.net.Socket;
