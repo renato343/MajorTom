@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
@@ -14,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import org.academiadecodigo.bootcamp.roothless.Navigation;
 import org.academiadecodigo.bootcamp.roothless.lunarModule.model.DynSpaceShip;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.model.LunarModule;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +28,9 @@ public class TestController implements Initializable {
 
     private DynSpaceShip dynSpaceShip;
     private Navigation navigation;
+    private String message;
 
+    private LunarModule lunarModule;
 
     @FXML
     private ResourceBundle resources;
@@ -35,16 +39,13 @@ public class TestController implements Initializable {
     private URL location;
 
     @FXML
-    private TextArea consoleTextArea;
+    private ImageView lua;
 
     @FXML
-    private ProgressBar fuelProgressBar;
+    private ImageView back;
 
     @FXML
     private ProgressBar posVerProgressBar;
-
-    @FXML
-    private ProgressBar posHorProgressBar;
 
     @FXML
     private Label velHorValueLabel;
@@ -53,25 +54,28 @@ public class TestController implements Initializable {
     private Label velVertValueLabel;
 
     @FXML
-    private Label posVertValueLabel;
+    private TextArea consoleTextArea;
 
     @FXML
-    private Label fuelValueLabel;
-
-    @FXML
-    private Label posHorValueLabel;
-
-    @FXML
-    private Label scoreValueLabel;
+    private Button send;
 
     @FXML
     private Label timeLabel;
 
     @FXML
-    private ImageView image;
+    private Label scoreValueLabel;
 
     @FXML
-    private ImageView lua;
+    private ProgressBar posHorProgressBar;
+
+    @FXML
+    private Label posHorValueLabel;
+
+    @FXML
+    private ProgressBar fuelProgressBar;
+
+    @FXML
+    private Label fuelValueLabel;
 
 
     @FXML
@@ -113,6 +117,26 @@ public class TestController implements Initializable {
         this.dynSpaceShip = dynSpaceShip;
     }
 
+    public void sendButton() {
+        System.out.println("------------------------------------------------------------------------------------------>entrei no send button no testcontrolle");
+       message = consoleTextArea.getText();
+       lunarModule.sendCommand(message);
+       consoleTextArea.setText("");
+
+
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setLunarModule(LunarModule lunarModule) {
+        this.lunarModule = lunarModule;
+    }
+}
+
+
+
  /*   public void up(ActionEvent actionEvent) {
         moveView(lua);
     }
@@ -125,5 +149,5 @@ public class TestController implements Initializable {
         moveView(lua, "left");
     }*/
 
-}
+
 

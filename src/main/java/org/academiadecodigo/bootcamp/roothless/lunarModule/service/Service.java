@@ -9,8 +9,6 @@ import org.academiadecodigo.bootcamp.roothless.lunarModule.model.Movement;
 public class Service {
 
     private DynSpaceShip dynSpaceShip;
-    private String direction;
-    private double thrust;
 
 
 

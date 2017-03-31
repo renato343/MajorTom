@@ -93,6 +93,8 @@ public class Test extends Application {
         LunarModule lunarModule = new LunarModule("localhost", 8080, service);
         lunarModule.start();
 
+        controller.setLunarModule(lunarModule);
+
 
       /*  service.thrustUp(200);*/
 
@@ -142,108 +144,5 @@ public class Test extends Application {
         return yPosition;
     }
 
-    private class LunarListener implements Runnable {
 
-        String messageIn;
-
-        public LunarListener(Socket houston) {
-
-            houstonSocket = houston;
-        }
-
-        public synchronized void run() {
-
-            receiveMessage();
-
-        }
-
-        public void receiveMessage() {
-
-            try {
-
-
-                DataInputStream in = new DataInputStream(houstonSocket.getInputStream());
-
-                while (!houstonSocket.isClosed()) {
-
-                    //console.setvisible(false);
-
-                    System.out.println("waiting Houston to write");
-
-                    messageIn = in.readLine();
-
-                    parserThrust(messageIn);
-                    parserDirection(messageIn);
-
-                    //console.setText(messageIn);
-
-                    //console.setvisible(true);
-
-                }
-                houstonSocket.close();
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        public void parserDirection(String messageReceived) {
-
-            System.out.println("this is message Received " + messageReceived);
-            String direction = messageReceived.split(" ")[0];
-
-
-        }
-
-        public void parserThrust(String messageReceived) {
-
-            System.out.println("this is message Received  in Thrust Parser" + messageReceived);
-            Double thrust = Double.parseDouble(messageReceived.split(" ")[1]);
-
-        }
-    }
-
-    private class LunarSender implements Runnable {
-
-
-        private LunarSender(Socket houston) {
-            houstonSocket = houston;
-        }
-
-        public synchronized void run() {
-
-            sendCommand();
-
-        }
-
-        public void sendCommand() {
-
-            try {
-
-                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(houstonSocket.getOutputStream()));
-
-                while (!houstonSocket.isClosed()) {
-
-                    System.out.println("in send command of lunarmodule");
-                    String message = readMyConsole();
-                    out.write(message);
-                    out.newLine();
-                    out.flush();
-                }
-                houstonSocket.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        private String readMyConsole() {
-
-            System.out.println("wait for server to write");
-            Scanner reader = new Scanner(System.in);
-            return reader.nextLine();
-
-        }
-    }
 }

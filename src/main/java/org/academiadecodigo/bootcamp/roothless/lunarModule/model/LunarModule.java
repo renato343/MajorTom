@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.roothless.lunarModule.model;
 
+import org.academiadecodigo.bootcamp.roothless.houston.controller.HoustonController;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.controller.TestController;
 import org.academiadecodigo.bootcamp.roothless.lunarModule.service.Service;
 
 import java.io.*;
@@ -16,12 +18,34 @@ public class LunarModule {
 
     Socket houstonSocket = null;
     private Service service;
+    private HoustonController houstonController;
+    private TestController testController;
+
 
 
     public LunarModule(String name, int port, Service service) {
         this.service = service;
         this.name = "localhost";
         this.port = 9999;
+    }
+
+    public void sendCommand(String message) {
+
+        try {
+
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(houstonSocket.getOutputStream()));
+
+                System.out.println("in send command of lunarmodule " + message);
+                out.write(message);
+                out.newLine();
+                out.flush();
+
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
     }
 
     public void start() {
@@ -31,13 +55,10 @@ public class LunarModule {
             houstonSocket = new Socket(name, port);
 
             LunarListener sender = new LunarListener(houstonSocket);
-            LunarSender listener = new LunarSender(houstonSocket);
 
             Thread senderThread = new Thread(sender);
-            Thread Listenerthread = new Thread(listener);
 
             senderThread.start();
-            Listenerthread.start();
 
 
         } catch (IOException e) {
@@ -114,52 +135,6 @@ public class LunarModule {
 
     }
 
-    private class LunarSender implements Runnable {
 
-
-        private LunarSender(Socket houston) {
-            houstonSocket = houston;
-        }
-
-        public synchronized void run() {
-
-            sendCommand();
-
-        }
-
-        public void sendCommand() {
-
-            try {
-
-                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(houstonSocket.getOutputStream()));
-
-                while (!houstonSocket.isClosed()) {
-
-                    System.out.println("in send command of lunarmodule");
-                    String message = readMyConsole();
-                    out.write(message);
-                    out.newLine();
-                    out.flush();
-                }
-                houstonSocket.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        private String readMyConsole() {
-
-            System.out.println("wait for server to write");
-            Scanner reader = new Scanner(System.in);
-            return reader.nextLine();
-
-        }
-    }
-
-
-    public void setService(Service service) {
-        this.service = service;
-    }
 }
 

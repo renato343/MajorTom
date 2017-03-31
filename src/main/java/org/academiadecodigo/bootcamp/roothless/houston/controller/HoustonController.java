@@ -114,7 +114,8 @@ public class HoustonController implements Initializable {
 
    public void setConsoleHouston(String messageToConsole){
 
-       System.out.println("enter set console in controller");
+       System.out.println("enter set console in controller" + messageToConsole);
+
         consoleHouston.setText(messageToConsole);
 
     }

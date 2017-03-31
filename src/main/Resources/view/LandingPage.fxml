@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d3f6f" height="400.0" layoutX="62.0" layoutY="157.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-width: 99999; -fx-arc-height: 40;" width="900.0" />
+        <TextArea fx:id="consoleTextArea" layoutX="368.0" layoutY="574.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="289.0" promptText="Type your text here; Press Enter to send it" />
+        <Label layoutX="84.0" layoutY="634.0" prefHeight="17.0" prefWidth="102.0" text="Vertical Velocity" textFill="WHITE" />
+        <ProgressBar fx:id="fuelProgressBar" layoutX="807.0" layoutY="344.0" prefHeight="30.0" prefWidth="369.0" progress="0.36" rotate="270.0" />
+        <ProgressBar fx:id="posVerProgressBar" layoutX="-146.0" layoutY="342.0" prefHeight="30.0" prefWidth="366.0" progress="0.54" rotate="270.0" />
+        <Label layoutX="968.0" layoutY="556.0" text="Fuel" textFill="WHITE" />
+        <ProgressBar fx:id="posHorProgressBar" layoutX="61.0" layoutY="116.0" prefHeight="30.0" prefWidth="900.0" progress="0.36" />
+        <Label layoutX="13.0" layoutY="553.0" text="Vertical Position" textFill="WHITE" />
+        <Label layoutX="63.0" layoutY="597.0" text="Horizontal Velocity" textFill="WHITE" />
+        <Label fx:id="velHorValueLabel" layoutX="219.0" layoutY="597.0" style="-fx-background-color: black; -fx-border-color: black;" text="hVValue" textFill="LIME" />
+        <Label fx:id="velVertValueLabel" layoutX="219.0" layoutY="634.0" style="-fx-background-color: black; -fx-border-color: black;" text="vVValue" textAlignment="CENTER" textFill="LIME" />
+        <Label fx:id="posVertValueLabel" layoutX="12.0" layoutY="576.0" text="pVValue" textAlignment="CENTER" textFill="WHITE" />
+        <Label fx:id="fuelValueLabel" layoutX="955.0" layoutY="580.0" text="fuelValue" textAlignment="CENTER" textFill="WHITE" />
+        <Label layoutX="62.0" layoutY="98.0" text="Horizontal Position" textFill="WHITE" />
+        <Label fx:id="posHorValueLabel" layoutX="196.0" layoutY="98.0" text="pHValue" textFill="WHITE" />
+        <Label layoutX="883.0" layoutY="22.0" style="-fx-border-color: black;" text="SCORE:" textFill="WHITE" />
+        <Label fx:id="scoreValueLabel" layoutX="939.0" layoutY="22.0" style="-fx-border-color: black;" text="scoreValue" textFill="WHITE" />
+        <Label fx:id="timeLabel" layoutX="793.0" layoutY="22.0" style="-fx-border-color: black;" text="HH:MM::SS" textFill="WHITE" />
+    </children>
+</Pane>
