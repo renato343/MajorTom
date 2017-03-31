@@ -4,26 +4,46 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.academiadecodigo.bootcamp.roothless.Navigation;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.controller.TestController;
 import org.academiadecodigo.bootcamp.roothless.lunarModule.model.DynSpaceShip;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.model.LunarModule;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.service.GameLoop;
+import org.academiadecodigo.bootcamp.roothless.lunarModule.service.Service;
 
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by codecadet on 31/03/2017.
  */
 public class Test extends Application {
+
+    String name = "localhost";
+    int port = 9999;
+
+    Socket houstonSocket = null;
+
     private DynSpaceShip dynSpaceShip = new DynSpaceShip();
     private double xPosition;
     private double yPosition;
 
 
     public static void main(String[] args) {
+
+
         launch(args);
+
 
     }
 
@@ -34,20 +54,45 @@ public class Test extends Application {
         navigation.setStage(primaryStage);
         navigation.loadScreen("Landingpage2");
 
-      //  Parent root = FXMLLoader.load(getClass().getResource("/view/Untitled.fxml"));
+       /* try {
+            LunarModule lunarModule = new LunarModule("localhost", 9999);
 
 
+            houstonSocket = new Socket(name, port);
 
-/*        System.out.println("----------------------------------------");
+            LunarListener sender = new LunarListener(houstonSocket);
+            LunarSender listener = new LunarSender(houstonSocket);
+
+            Thread senderThread = new Thread(sender);
+            Thread Listenerthread = new Thread(listener);
+
+            senderThread.start();
+            Listenerthread.start();
+            lunarModule.start();
+
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }*/
+
+
+        //  Parent root = FXMLLoader.load(getClass().getResource("/view/Untitled.fxml"));
+
+
+        System.out.println("----------------------------------------");
 
         GameLoop gameLoop = new GameLoop();
         Service service = new Service();
         service.setDynSpaceShip(dynSpaceShip);
         dynSpaceShip.start(gameLoop);
-        gameLoop.setDynSpaceShip(dynSpaceShip);*/
+        gameLoop.setDynSpaceShip(dynSpaceShip);
+        TestController controller = (TestController) navigation.getController("Landingpage2");
+        controller.setDynSpaceShip(dynSpaceShip);
 
-       /* LunarModule lunarModule = new LunarModule("localhost", 8080,service);
-        lunarModule.start();*/
+        LunarModule lunarModule = new LunarModule("localhost", 8080, service);
+        lunarModule.start();
+
 
       /*  service.thrustUp(200);*/
 
@@ -74,20 +119,6 @@ public class Test extends Application {
 
 
     }
-    public void moveView(ImageView imageView) {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), ev -> {
-            System.out.println("atualizando");
-
-            System.out.println("X POSITION AT MAIN" + dynSpaceShip.getxPosition());
-            System.out.println("Y POSITION AT MAIN" + dynSpaceShip.getyPosition());
-
-            imageView.setViewport(new Rectangle2D(2100 + dynSpaceShip.getxPosition() / 10, 1700 + dynSpaceShip.getyPosition() / 10, 900, 400));
-        }));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-    }
-
-
 
 
 
@@ -109,5 +140,110 @@ public class Test extends Application {
 
     public double getyPosition() {
         return yPosition;
+    }
+
+    private class LunarListener implements Runnable {
+
+        String messageIn;
+
+        public LunarListener(Socket houston) {
+
+            houstonSocket = houston;
+        }
+
+        public synchronized void run() {
+
+            receiveMessage();
+
+        }
+
+        public void receiveMessage() {
+
+            try {
+
+
+                DataInputStream in = new DataInputStream(houstonSocket.getInputStream());
+
+                while (!houstonSocket.isClosed()) {
+
+                    //console.setvisible(false);
+
+                    System.out.println("waiting Houston to write");
+
+                    messageIn = in.readLine();
+
+                    parserThrust(messageIn);
+                    parserDirection(messageIn);
+
+                    //console.setText(messageIn);
+
+                    //console.setvisible(true);
+
+                }
+                houstonSocket.close();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void parserDirection(String messageReceived) {
+
+            System.out.println("this is message Received " + messageReceived);
+            String direction = messageReceived.split(" ")[0];
+
+
+        }
+
+        public void parserThrust(String messageReceived) {
+
+            System.out.println("this is message Received  in Thrust Parser" + messageReceived);
+            Double thrust = Double.parseDouble(messageReceived.split(" ")[1]);
+
+        }
+    }
+
+    private class LunarSender implements Runnable {
+
+
+        private LunarSender(Socket houston) {
+            houstonSocket = houston;
+        }
+
+        public synchronized void run() {
+
+            sendCommand();
+
+        }
+
+        public void sendCommand() {
+
+            try {
+
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(houstonSocket.getOutputStream()));
+
+                while (!houstonSocket.isClosed()) {
+
+                    System.out.println("in send command of lunarmodule");
+                    String message = readMyConsole();
+                    out.write(message);
+                    out.newLine();
+                    out.flush();
+                }
+                houstonSocket.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        private String readMyConsole() {
+
+            System.out.println("wait for server to write");
+            Scanner reader = new Scanner(System.in);
+            return reader.nextLine();
+
+        }
     }
 }

@@ -10,21 +10,21 @@ public class Service {
 
     private DynSpaceShip dynSpaceShip;
     private String direction;
-    private int thrust;
+    private double thrust;
 
 
 
-    public void thrustUp(int power) {
+    public void thrustUp(double power) {
         dynSpaceShip.setThrustUpValue(power/5);
         dynSpaceShip.setCountThrustUp(0);
     }
 
-    public void thrustLeft(int power) {
-        dynSpaceShip.setThrustHorizontal(-power);
+    public void thrustLeft(double power) {
+        dynSpaceShip.setThrustHorizontal((power)*-1);
         dynSpaceShip.setCountThrustHor(0);
     }
 
-    public void thrustRight(int power) {
+    public void thrustRight(double power) {
         dynSpaceShip.setThrustHorizontal(power);
         dynSpaceShip.setCountThrustHor(0);
     }

@@ -51,7 +51,7 @@ public class HoustonController implements Initializable {
 
     private double thrust;
 
-    private Houston houston = new Houston("localhost", 8080);
+    private Houston houston = new Houston("localhost", 9999);
 
     public void setHouston(Houston houston) {
         this.houston = houston;

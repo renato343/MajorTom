@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.roothless.lunarModule.model;
 
+import org.academiadecodigo.bootcamp.roothless.lunarModule.service.Service;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -13,11 +15,13 @@ public class LunarModule {
     int port;
 
     Socket houstonSocket = null;
+    private Service service;
 
 
-    public LunarModule(String name, int port) {
+    public LunarModule(String name, int port, Service service) {
+        this.service = service;
         this.name = "localhost";
-        this.port = 8080;
+        this.port = 9999;
     }
 
     public void start() {
@@ -73,8 +77,7 @@ public class LunarModule {
 
                     messageIn = in.readLine();
 
-                    parserThrust(messageIn);
-                    parserDirection(messageIn);
+                    parser(messageIn);
 
                     //console.setText(messageIn);
 
@@ -89,20 +92,26 @@ public class LunarModule {
             }
         }
 
-        public void parserDirection(String messageReceived) {
-
+        public void parser(String messageReceived) {
             System.out.println("this is message Received " + messageReceived);
-            String direction = messageReceived.split(" ")[0];
+            String direction = messageReceived.split(" ")[0].toLowerCase();
+            double thrust = Double.parseDouble(messageReceived.split(" ")[1]);
 
+            switch (direction) {
+                case "up":
+                    service.thrustUp(thrust);
+                    break;
+                case "right":
+                    service.thrustRight(thrust);
+                    break;
+                case "left":
+                    service.thrustLeft(thrust);
+                    break;
+
+            }
 
         }
 
-        public void parserThrust(String messageReceived) {
-
-            System.out.println("this is message Received  in Thrust Parser" + messageReceived);
-            Double thrust = Double.parseDouble(messageReceived.split(" ")[1]);
-
-        }
     }
 
     private class LunarSender implements Runnable {
@@ -148,14 +157,9 @@ public class LunarModule {
         }
     }
 
-    public static void main(String[] args) {
 
-        LunarModule lunarModule = new LunarModule("localhost", 8080);
-
-        lunarModule.start();
-
+    public void setService(Service service) {
+        this.service = service;
     }
-
-
 }
 

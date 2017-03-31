@@ -7,16 +7,17 @@ import org.academiadecodigo.bootcamp.roothless.lunarModule.service.GameLoop;
  * Created by codecadet on 30/03/17.
  */
 public class DynSpaceShip {
+
     private double xPosition = 100;
     private double yPosition = 100;
     private double xVelocity;
     private double yVelocity;
     private float initialTime;
     private Planet planet = Planet.MOON;
-    private int thrustUpValue = 0;
-    private int thrustHorizontal = 0;
-    private int countThrustUp;
-    private int countThrustHor;
+    private double thrustUpValue = 0;
+    private double thrustHorizontal = 0;
+    private double countThrustUp;
+    private double countThrustHor;
 
 
 
@@ -31,6 +32,7 @@ public class DynSpaceShip {
         System.out.println("ELAPSED TIME: " + elapsedTime);
 
         initialTime = nowTime;
+
         double yPosition0 = yPosition;
         double xPosition0 = xPosition;
         double xVelocity0 = xVelocity;
@@ -49,11 +51,11 @@ public class DynSpaceShip {
     }
 
 
-    public int getThrustUpValue() {
+    public double getThrustUpValue() {
         return thrustUpValue;
     }
 
-    public void setThrustUpValue(int thrustUpValue) {
+    public void setThrustUpValue(double thrustUpValue) {
         this.thrustUpValue = thrustUpValue;
     }
 
@@ -101,27 +103,27 @@ public class DynSpaceShip {
         return planet;
     }
 
-    public int getThrustHorizontal() {
+    public double getThrustHorizontal() {
         return thrustHorizontal;
     }
 
-    public void setThrustHorizontal(int thrustHorizontal) {
+    public void setThrustHorizontal(double thrustHorizontal) {
         this.thrustHorizontal = thrustHorizontal;
     }
 
-    public int getCountThrustUp() {
+    public double getCountThrustUp() {
         return countThrustUp;
     }
 
-    public void setCountThrustUp(int countThrustUp) {
+    public void setCountThrustUp(double countThrustUp) {
         this.countThrustUp = countThrustUp;
     }
 
-    public int getCountThrustHor() {
+    public double getCountThrustHor() {
         return countThrustHor;
     }
 
-    public void setCountThrustHor(int countThrustHor) {
+    public void setCountThrustHor(double countThrustHor) {
         this.countThrustHor = countThrustHor;
     }
 }

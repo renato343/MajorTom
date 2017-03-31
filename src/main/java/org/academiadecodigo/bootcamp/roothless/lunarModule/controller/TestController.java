@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class TestController implements Initializable {
 
-    private DynSpaceShip dynSpaceShip = new DynSpaceShip();
+    private DynSpaceShip dynSpaceShip;
     private Navigation navigation;
 
 
@@ -76,6 +77,7 @@ public class TestController implements Initializable {
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         //navigation.loadScreen("Landingpage");
 
 //        Image imageLoad = new Image("LuaMax.jpg");
@@ -85,41 +87,23 @@ public class TestController implements Initializable {
 
 
         System.out.println("CONTROLLER!!!!!!");
+        moveView(lua);
     }
 
-    public void init() {
+  /*  public void init() {
         moveView(lua, "up");
-    }
+    }*/
 
-    private void moveView(ImageView imageView, String direction) {
+    private void moveView(ImageView imageView) {
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), ev -> {
             System.out.println("atualizando");
 
-
-            switch (direction) {
-                case "up":
-                    double getPos = dynSpaceShip.getyPosition();
-                    imageView.setTranslateY(getPos + 10);
-                    dynSpaceShip.setyPosition(getPos + 10);
-                    break;
-                case "right":
-                    double getPos1 = dynSpaceShip.getxPosition();
-                    imageView.setTranslateX(dynSpaceShip.getxPosition() - 10);
-                    dynSpaceShip.setxPosition(getPos1 - 10);
-                    break;
-                case "left":
-                    double getPos2 = dynSpaceShip.getxPosition();
-                    imageView.setTranslateX(dynSpaceShip.getxPosition() + 10);
-                    dynSpaceShip.setxPosition(getPos2 + 10);
-                    break;
-            }
+            System.out.println("X POSITION AT MAIN " + dynSpaceShip.getxPosition());
+            System.out.println("Y POSITION AT MAIN " + dynSpaceShip.getyPosition());
 
 
-            System.out.println("X POSITION AT MAIN" + dynSpaceShip.getxPosition());
-            System.out.println("Y POSITION AT MAIN" + dynSpaceShip.getyPosition());
-
-            // imageView.setViewport(new Rectangle2D(1024 + dynSpaceShip.getxPosition() / 10, 728 + dynSpaceShip.getyPosition() / 10, 900, 400));
+            imageView.setViewport(new Rectangle2D(1950 + dynSpaceShip.getxPosition() , 1200 + dynSpaceShip.getyPosition() , 1024, 768));
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
@@ -129,8 +113,8 @@ public class TestController implements Initializable {
         this.dynSpaceShip = dynSpaceShip;
     }
 
-    public void up(ActionEvent actionEvent) {
-        moveView(lua, "up");
+ /*   public void up(ActionEvent actionEvent) {
+        moveView(lua);
     }
 
     public void right(ActionEvent actionEvent) {
@@ -139,7 +123,7 @@ public class TestController implements Initializable {
 
     public void left(ActionEvent actionEvent) {
         moveView(lua, "left");
-    }
+    }*/
 
 }
 
