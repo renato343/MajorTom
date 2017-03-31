@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="org.academiadecodigo.bootcamp.roothless.user.User" table="user" schema="majorTom" lazy="false">
+
+        <id name="id" column="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property name="username" column="username" type="string" unique="true" not-null="true"/>
+        <property name="password" column="password" type="string" not-null="true"/>
+        <property name="planet" column="planet" type="string"/>
+        <property name="score_houston" column="score_houston" type="double"/>
+        <property name="score_ship" column="score_ship" type="double"/>
+        <property name="date_score" column="date_score" type="timestamp"/>
+
+
+    </class>
+
+
+</hibernate-mapping>
