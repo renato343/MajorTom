@@ -10,7 +10,7 @@ public class User {
     private String password;
     private String planet;
     private double score_houston;
-    private double score_ship;
+    private double score_spaceship;
     private Date date_score;
 
     public Date getDate_score() {
@@ -22,11 +22,11 @@ public class User {
     }
 
     public double getScore_ship() {
-        return score_ship;
+        return score_spaceship;
     }
 
     public void setScore_ship(double score_ship) {
-        this.score_ship = score_ship;
+        this.score_spaceship = score_ship;
     }
 
     public double getScore_houston() {
